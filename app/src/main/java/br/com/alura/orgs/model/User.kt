@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 private const val EMAIL_REGEX= "^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})"
 
 @Entity
-data class Usuario(
+data class User(
     @PrimaryKey
     val id: String,
     val email: String,

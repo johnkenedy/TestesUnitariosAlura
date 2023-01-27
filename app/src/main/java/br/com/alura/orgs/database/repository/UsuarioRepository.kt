@@ -1,12 +1,12 @@
 package br.com.alura.orgs.database.repository
 
 import br.com.alura.orgs.database.dao.UsuarioDao
-import br.com.alura.orgs.model.Usuario
+import br.com.alura.orgs.model.User
 
 class UsuarioRepository(
     private val dao: UsuarioDao
 ) {
-    suspend fun salva(usuario: Usuario) = dao.salva(usuario)
+    suspend fun salva(user: User) = dao.salva(user)
 
     suspend fun autentica(usuarioId: String, senha: String) = dao.autentica(usuarioId, senha)
 

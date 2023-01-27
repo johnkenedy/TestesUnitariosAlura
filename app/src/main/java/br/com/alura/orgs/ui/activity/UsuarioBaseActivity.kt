@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.database.repository.UsuarioRepository
 import br.com.alura.orgs.extensions.vaiPara
-import br.com.alura.orgs.model.Usuario
+import br.com.alura.orgs.model.User
 import br.com.alura.orgs.preferences.dataStore
 import br.com.alura.orgs.preferences.usuarioLogadoPreferences
 import kotlinx.coroutines.flow.*
@@ -19,8 +19,8 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
     private val usuarioDao by lazy {
         AppDatabase.instancia(this).usuarioDao()
     }
-    private val _usuario: MutableStateFlow<Usuario?> = MutableStateFlow(null)
-    protected val usuario: StateFlow<Usuario?> = _usuario
+    private val _user: MutableStateFlow<User?> = MutableStateFlow(null)
+    protected val user: StateFlow<User?> = _user
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +41,7 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
         UsuarioRepository(usuarioDao)
             .buscaPorId(usuarioId)
             .firstOrNull().also {
-                _usuario.value = it
+                _user.value = it
             }
 
     protected suspend fun deslogaUsuario() {

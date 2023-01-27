@@ -16,7 +16,7 @@ class ProdutoTests {
             valor = BigDecimal("6.99")
         )
 
-        val valorEhValido = produtoValido.valorEhValido
+        val valorEhValido = produtoValido.validValue
 
         valorEhValido.shouldBeTrue()
     }
@@ -31,7 +31,7 @@ class ProdutoTests {
         )
 
         //Act - Agir
-        val valorEhValido = produtoInvalido.valorEhValido
+        val valorEhValido = produtoInvalido.validValue
 
         //Assert - Afirme
         valorEhValido.shouldBeFalse()
@@ -50,8 +50,8 @@ class ProdutoTests {
             valor = BigDecimal("-10.99")
         )
 
-        val valorIgualAZeroEhValido = produtoComValorIgualAZero.valorEhValido
-        val valorMenorQueZeroEhValido = produtoComValorMenorQueZero.valorEhValido
+        val valorIgualAZeroEhValido = produtoComValorIgualAZero.validValue
+        val valorMenorQueZeroEhValido = produtoComValorMenorQueZero.validValue
 
         valorIgualAZeroEhValido.shouldBeFalse()
         valorMenorQueZeroEhValido.shouldBeFalse()

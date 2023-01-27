@@ -3,25 +3,27 @@ package br.com.alura.orgs.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import br.com.alura.orgs.model.Usuario
+import br.com.alura.orgs.model.User
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UsuarioDao {
 
     @Insert
-    suspend fun salva(usuario: Usuario)
+    suspend fun salva(user: User)
 
-    @Query("""
-        SELECT * FROM Usuario 
+    @Query(
+        """
+        SELECT * FROM User 
         WHERE id = :usuarioId 
-        AND senha = :senha""")
+        AND senha = :senha"""
+    )
     suspend fun autentica(
         usuarioId: String,
         senha: String
-    ): Usuario?
+    ): User?
 
-    @Query("SELECT * FROM Usuario WHERE id = :usuarioId")
-    fun buscaPorId(usuarioId: String): Flow<Usuario>
+    @Query("SELECT * FROM User WHERE id = :usuarioId")
+    fun buscaPorId(usuarioId: String): Flow<User>
 
 }

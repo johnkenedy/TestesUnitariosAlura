@@ -8,7 +8,7 @@ import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.database.repository.UsuarioRepository
 import br.com.alura.orgs.databinding.ActivityFormularioCadastroUsuarioBinding
 import br.com.alura.orgs.extensions.toast
-import br.com.alura.orgs.model.Usuario
+import br.com.alura.orgs.model.User
 import kotlinx.coroutines.launch
 
 class FormularioCadastroUsuarioActivity : AppCompatActivity() {
@@ -33,10 +33,10 @@ class FormularioCadastroUsuarioActivity : AppCompatActivity() {
         }
     }
 
-    private fun cadastra(usuario: Usuario) {
+    private fun cadastra(user: User) {
         lifecycleScope.launch {
             try {
-                UsuarioRepository(dao).salva(usuario)
+                UsuarioRepository(dao).salva(user)
                 finish()
             } catch (e: Exception) {
                 Log.e("CadastroUsuario", "configuraBotaoCadastrar: ", e)
@@ -45,10 +45,10 @@ class FormularioCadastroUsuarioActivity : AppCompatActivity() {
         }
     }
 
-    private fun criaUsuario(): Usuario {
+    private fun criaUsuario(): User {
         val usuario = binding.activityFormularioCadastroUsuario.text.toString()
         val nome = binding.activityFormularioCadastroEmail.text.toString()
         val senha = binding.activityFormularioCadastroSenha.text.toString()
-        return Usuario(usuario, nome, senha)
+        return User(usuario, nome, senha)
     }
 }

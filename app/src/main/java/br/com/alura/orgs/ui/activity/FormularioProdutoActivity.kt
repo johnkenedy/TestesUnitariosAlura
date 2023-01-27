@@ -1,8 +1,6 @@
 package br.com.alura.orgs.ui.activity
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.database.dao.ProdutoDao
@@ -10,12 +8,7 @@ import br.com.alura.orgs.database.repository.ProdutoRepository
 import br.com.alura.orgs.databinding.ActivityFormularioProdutoBinding
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
-import br.com.alura.orgs.preferences.dataStore
-import br.com.alura.orgs.preferences.usuarioLogadoPreferences
 import br.com.alura.orgs.ui.dialog.FormularioImagemDialog
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
@@ -87,9 +80,9 @@ class FormularioProdutoActivity : UsuarioBaseActivity() {
 
         botaoSalvar.setOnClickListener {
             lifecycleScope.launch {
-                usuario.value?.let { usuario ->
+                user.value?.let { usuario ->
                     val produtoNovo = criaProduto(usuario.id)
-                    if (produtoNovo.valorEhValido) {
+                    if (produtoNovo.validValue) {
                         ProdutoRepository(produtoDao).salva(produtoNovo)
                         finish()
                     }

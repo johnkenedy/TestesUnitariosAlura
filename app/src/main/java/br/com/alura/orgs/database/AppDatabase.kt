@@ -9,12 +9,12 @@ import br.com.alura.orgs.database.converter.Converters
 import br.com.alura.orgs.database.dao.ProdutoDao
 import br.com.alura.orgs.database.dao.UsuarioDao
 import br.com.alura.orgs.model.Produto
-import br.com.alura.orgs.model.Usuario
+import br.com.alura.orgs.model.User
 
 @Database(
     entities = [
         Produto::class,
-        Usuario::class
+        User::class
     ],
     version = 3,
     exportSchema = true
